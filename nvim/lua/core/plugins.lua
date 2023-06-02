@@ -9,10 +9,6 @@ local ensure_packer = function()
   return false
 end
 
---function ()
---
---end
-
 local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
@@ -24,6 +20,9 @@ return require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'
 -- Code completion 
   use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
@@ -34,6 +33,11 @@ return require('packer').startup(function(use)
     "williamboman/mason-lspconfig.nvim",
     "williamboman/nvim-lspconfig",
   }
+-- Autopairs
+use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 -- Telescope 
   use {
     'nvim-telescope/telescope.nvim',
